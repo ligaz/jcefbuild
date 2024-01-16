@@ -19,11 +19,6 @@ jobs:
     runs-on: flyci-macos-large-latest-m2
     steps:
       - uses: actions/checkout@v4
-      -
-        name: Setup environment
-        run: |
-          chmod +x scripts/install_macos_dependencies.sh
-          ./scripts/install_macos_dependencies.sh
       - name: Set up Java
         uses: actions/setup-java@v3
         with:
@@ -31,7 +26,12 @@ jobs:
           distribution: 'adopt'
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.9' 
+          python-version: '3.9'
+      -
+        name: Setup environment
+        run: |
+          chmod +x scripts/install_macos_dependencies.sh
+          ./scripts/install_macos_dependencies.sh
       -
         name: Build
         run: |
